@@ -17,7 +17,7 @@ public class MatriculaController {
         this.matriculaService = matriculaService;
     }
 
-    @GetMapping("/findByLoan/{alumnoCedula}/{asignaturaCode}")
+    @GetMapping("/registroAsignatura/{alumnoCedula}/{asignaturaCode}")
     public ResponseEntity<RegistroAsignatura> asignaEstudiante(
             @PathVariable(name = "alumnoCedula") String alumnoCedula,
             @PathVariable(name = "asignaturaCode") Integer asignaturaCode

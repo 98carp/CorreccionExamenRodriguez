@@ -6,6 +6,7 @@ import ec.edu.espe.examenRodriguez.dao.RegistroAsignaturaRepository;
 import ec.edu.espe.examenRodriguez.domain.Alumno;
 import ec.edu.espe.examenRodriguez.domain.Asignatura;
 import ec.edu.espe.examenRodriguez.domain.RegistroAsignatura;
+import ec.edu.espe.examenRodriguez.domain.RegistroAsignaturaPK;
 import ec.edu.espe.examenRodriguez.service.exception.AsignException;
 import ec.edu.espe.examenRodriguez.service.exception.NotFoundException;
 import org.springframework.stereotype.Service;
@@ -36,11 +37,14 @@ public class MatriculaService {
             throw new AsignException("No se puede asignar al estudiante "+alumnoTemp.getNombre()+" a la asignatura "+asignaturaTemp.getNombre()+" debido a que ya se encuentra asignado");
         }
         registroAsignatura=new RegistroAsignatura();
+        RegistroAsignaturaPK tempRegistroAsignaturaPk=new RegistroAsignaturaPK();
+        tempRegistroAsignaturaPk.setCodAsignatura(asignaturaTemp.getCodAsignatura());
+        tempRegistroAsignaturaPk.setCodAlumno(alumnoTemp.getCodAlumno());
+        registroAsignatura.setRegistroAsignaturaCode(tempRegistroAsignaturaPk);
         registroAsignatura.setAsignatura(asignaturaTemp);
         registroAsignatura.setAlumno(alumnoTemp);
         registroAsignatura.setEstado("ACT");
         this.registroAsignaturaRepository.save(registroAsignatura);
-
 
         return registroAsignatura;
     }

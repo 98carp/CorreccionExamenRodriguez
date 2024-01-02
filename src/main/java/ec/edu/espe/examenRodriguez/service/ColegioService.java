@@ -24,7 +24,7 @@ public class ColegioService {
 
     }
     public List<Colegio> encontrarColegiosPorPatron(String colegioPatron){
-        List<Colegio> colegios=this.colegioRepository.findColegiosByNombreLike(colegioPatron);
+        List<Colegio> colegios=this.colegioRepository.findByNombreContaining(colegioPatron);
         if(colegios.isEmpty()){
             throw new NotFoundException("No se encontraron colegios con el patrón: " + colegioPatron);
         }

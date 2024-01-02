@@ -7,6 +7,6 @@ import java.util.List;
 
 @Repository
 public interface ColegioRepository extends JpaRepository<Colegio,Integer> {
-    List<Colegio> findColegiosByNombreLike(String colegioPattern);
+    List<Colegio>findByNombreContaining(String colegioPattern);
     Colegio findColegiosByCodColegio(Integer codColegio);
 }
